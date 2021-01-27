@@ -45,8 +45,8 @@ function SidebarChat({id, name, addNewChat}) {
                 doc.data()))
             ))
         }
-        // console.log(messages)
-    },[])
+        console.log(messages)
+    },[id])
 
     // reusing return value
     return !addNewChat ? (
@@ -56,7 +56,6 @@ function SidebarChat({id, name, addNewChat}) {
             <div className="sidebarChat__info">
                 <h2>{name}</h2>
                 <p>{messages[0]?.message}</p>
-                {/* <p>dd</p> */}
             </div>
             </div>
         </Link>
