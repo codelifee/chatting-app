@@ -2,8 +2,11 @@ import React, {useEffect, useState} from 'react'
 import {Avatar} from "@material-ui/core"
 import './SidebarChat.css'
 import db from './configuration/firebase'
+import { useParams } from "react-router-dom";
+import {Link} from 'react-router-dom'
 
 function SidebarChat({id, name, addNewChat}) {
+    const {roomId} = useParams();
 
     const [seed, setSeed] = useState('');
 
@@ -23,13 +26,15 @@ function SidebarChat({id, name, addNewChat}) {
 
     // reusing return value
     return !addNewChat ? (
-        <div className="sidebarChat">
+        <Link to={`/rooms/${id}`}>
+            <div className="sidebarChat">
             <Avatar src={`https://avatars.dicebear.com/api/human/${seed}.svg`}/>
             <div className="sidebarChat__info">
                 <h2>{name}</h2>
                 <p>Last message...</p>
             </div>
-        </div>
+            </div>
+        </Link>
     ) : (
         <div onClick={createChat}
         className="sidebarChat"
